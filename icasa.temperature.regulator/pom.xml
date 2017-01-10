@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-    <parent>
-        <artifactId>teaching.reactor</artifactId>
-        <groupId>fr.liglab.adele.icasa.teaching.verwee</groupId>
-        <version>0.1-SNAPSHOT</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
-
-    <!-- DESCRIPTION OBLIGATOIRE DE L'ARTIFACT-->
-    <!-- Le groupeid et la version sont hérité du parent -->
-    <artifactId>icasa.light.regulator</artifactId>
-    <packaging>bundle</packaging>
-
-    <dependencies>
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>fr.liglab.adele.icasa.teaching.verwee</groupId>
+    <artifactId>teaching.reactor</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>icasa.temperature.regulator</artifactId>
+  <packaging>bundle</packaging>
+  <name>icasa.temperature.regulator</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>
         <!--iPOJO dep -->
         <dependency>
             <groupId>org.apache.felix</groupId>
@@ -32,12 +32,16 @@
             <artifactId>context.api</artifactId>
         </dependency>
         
-
+        <dependency>
+            <groupId>fr.liglab.adele.icasa</groupId>
+            <artifactId>technical.services.api</artifactId>
+            <version>1.2.7-SNAPSHOT</version>
+        </dependency>
         
         <!-- Dépendance liée à l'utilisation des services, il faut importer leurs classes pour pouvoir les utiliser -->
         <dependency>
             <groupId>fr.liglab.adele.icasa.teaching.verwee</groupId>
-            <artifactId>icasa.light.api</artifactId>
+            <artifactId>icasa.temperature.api</artifactId>
             <version>${project.version}</version>
         </dependency>
         
@@ -60,5 +64,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
