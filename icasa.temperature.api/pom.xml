@@ -45,7 +45,7 @@
                 <configuration>
                     <instructions>
                         <Export-Package>
-                            org.example.follow.me.api
+                            org.icasa.temperature.api
                         </Export-Package>
                     </instructions>
                 </configuration>

@@ -13,7 +13,7 @@ import fr.liglab.adele.icasa.command.handler.CommandProvider;
 @CommandProvider( namespace="temperature" )
 public class TemperatureCommandImpl {
 	@Requires
-	TemperatureManagerAdministration temperatureManagerAdministration;
+	private TemperatureManagerAdministration temperatureManagerAdministration;
 	
 	@Command
 	public void tempIsTooHigh(String roomName) {

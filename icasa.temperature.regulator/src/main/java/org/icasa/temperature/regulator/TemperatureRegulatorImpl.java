@@ -24,7 +24,7 @@ import fr.liglab.adele.icasa.service.scheduler.PeriodicRunnable;
 
 @Component
 @Instantiate
-@Provides( specifications = TemperatureConfiguration.class)
+@Provides( specifications = {TemperatureConfiguration.class,PeriodicRunnable.class})
 public class TemperatureRegulatorImpl implements TemperatureConfiguration, PeriodicRunnable
 {
 

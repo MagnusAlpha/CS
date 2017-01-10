@@ -13,7 +13,7 @@ import org.icasa.temperature.api.TemperatureManagerAdministration;
 public class TemperatureManagerImpl implements TemperatureManagerAdministration {
 
 	@Requires
-	TemperatureConfiguration temperatureConfiguration;
+	private TemperatureConfiguration temperatureConfiguration;
 	
 	@Override
 	public void temperatureIsTooHigh(String roomName) {
