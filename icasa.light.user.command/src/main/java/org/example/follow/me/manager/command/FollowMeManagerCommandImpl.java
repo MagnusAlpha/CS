@@ -3,6 +3,7 @@ package org.example.follow.me.manager.command;
 import org.apache.felix.ipojo.annotations.Component;
 import org.apache.felix.ipojo.annotations.Instantiate;
 import org.apache.felix.ipojo.annotations.Requires;
+import org.example.follow.me.api.EnergyGoal;
 import org.example.follow.me.api.FollowMeAdministration;
 import org.example.follow.me.api.IlluminanceGoal;
 
@@ -64,6 +65,50 @@ public class FollowMeManagerCommandImpl {
 			break;
 		case SOFT:
 			System.out.println("SOFT.");
+			break;
+		case MEDIUM:
+			System.out.println("MEDIUM.");
+			break;
+		default:
+			break;
+		}
+    }
+    
+ // Each command should start with a @Command annotation
+    @Command
+    public void setEnergyPreference(String goal) {
+        // The targeted goal
+        // Fix the init
+        EnergyGoal energyGoal = EnergyGoal.MEDIUM;
+        // Here you have to convert the goal string into an illuminance
+        // goal and fail if the entry is not "SOFT", "MEDIUM" or "HIGH"
+        
+        if( goal.compareToIgnoreCase("LOW") == 0 ){
+        	energyGoal = EnergyGoal.LOW;
+        }else if ( goal.compareToIgnoreCase("MEDIUM") == 0  ){
+        	energyGoal = EnergyGoal.MEDIUM;
+        }else if ( goal.compareToIgnoreCase("HIGH") == 0  ){
+        	energyGoal = EnergyGoal.HIGH;
+        }else{
+        	// error
+        	System.out.println("Only LOW, MEDIUM or HIGH is tolerated");
+        	return;
+        }
+
+        //call the administration service to configure it :
+        m_administrationService.setEnergySavingGoal(energyGoal);
+    }
+
+    @Command
+    public void getEnergyPreference(){
+        //implement the command that print the current value of the goal
+        System.out.print("The energy goal is "); //...
+        switch (m_administrationService.getEnergyGoal()) {
+		case HIGH:
+			System.out.println("HIGH.");
+			break;
+		case LOW:
+			System.out.println("LOW.");
 			break;
 		case MEDIUM:
 			System.out.println("MEDIUM.");

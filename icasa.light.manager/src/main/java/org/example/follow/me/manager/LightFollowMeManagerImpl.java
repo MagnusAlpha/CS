@@ -11,6 +11,7 @@ import org.apache.felix.ipojo.annotations.Provides;
 import org.apache.felix.ipojo.annotations.Requires;
 import org.apache.felix.ipojo.annotations.Unbind;
 import org.apache.felix.ipojo.annotations.Validate;
+import org.example.follow.me.api.EnergyGoal;
 import org.example.follow.me.api.FollowMeAdministration;
 import org.example.follow.me.api.FollowMeConfiguration;
 import org.example.follow.me.api.IlluminanceGoal;
@@ -38,7 +39,7 @@ public class LightFollowMeManagerImpl implements  FollowMeAdministration
 	public void setIlluminancePreference(IlluminanceGoal illuminanceGoal) {
 		// TODO Auto-generated method stub
 		followMeConfiguration.setMaximumNumberOfLightsToTurnOn(illuminanceGoal.getNumberOfLightsToTurnOn());
-		followMeConfiguration.setMaximumAllowedEnergyInRoom(100*illuminanceGoal.getNumberOfLightsToTurnOn());		
+			
 	}
 
 	@Override
@@ -65,6 +66,26 @@ public class LightFollowMeManagerImpl implements  FollowMeAdministration
 		}
 		
 		return illuminanceGoal;
+	}
+
+	@Override
+	public void setEnergySavingGoal(EnergyGoal energyGoal) {
+		followMeConfiguration.setMaximumAllowedEnergyInRoom( energyGoal.getMaximumEnergyInRoom() );	
+		
+	}
+
+	@Override
+	public EnergyGoal getEnergyGoal() {
+		Double energyFloat = followMeConfiguration.getMaximumAllowedEnergyInRoom();
+		if ( energyFloat.equals( EnergyGoal.HIGH.getMaximumEnergyInRoom() )  )
+			return EnergyGoal.HIGH;
+		if ( energyFloat.equals( EnergyGoal.MEDIUM.getMaximumEnergyInRoom() )  )
+			return EnergyGoal.MEDIUM;
+		if ( energyFloat.equals( EnergyGoal.LOW.getMaximumEnergyInRoom() )  )
+			return EnergyGoal.LOW;
+		followMeConfiguration.setMaximumAllowedEnergyInRoom( EnergyGoal.MEDIUM.getMaximumEnergyInRoom() );
+		return EnergyGoal.MEDIUM;
+		
 	}
 	
 	

@@ -35,7 +35,7 @@
       
         <!-- Dépendance liée à l'utilisation des services, il faut importer leurs classes pour pouvoir les utiliser -->
         <dependency>
-            <groupId>fr.liglab.adele.icasa.teaching</groupId>
+            <groupId>fr.liglab.adele.icasa.teaching.verwee</groupId>
             <artifactId>icasa.light.api</artifactId>
             <version>${project.version}</version>
         </dependency>
