@@ -22,7 +22,10 @@ public class TemperatureCommandImpl {
 
 	@Command
 	public void tempIsTooLow(String roomName) {
+		System.out.println("temp is too low cmd start");
+		System.out.println("room name "+ roomName);
 		temperatureManagerAdministration.temperatureIsTooLow(roomName);
+		System.out.println("temp is too low cmd ended");
 	}
 
 }

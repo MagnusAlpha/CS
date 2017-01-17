@@ -1,6 +1,7 @@
 package org.icasa.temperature.regulator;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -101,7 +102,7 @@ public class TemperatureRegulatorImpl implements TemperatureConfiguration, Perio
 	/** Component Lifecycle Method */
 	@Validate
 	public void start() {
-		// TODO: Add your implementation code here
+		mapZoneTemperature = new LinkedHashMap<Zone, Float>();
 	}
 
 	@Override
@@ -198,12 +199,17 @@ public class TemperatureRegulatorImpl implements TemperatureConfiguration, Perio
 	@Override
 	public void setTargetedTemperature(String targetedRoom, float temperature) {
 		// TODO Auto-generated method stub
+		System.out.println("temperature requested is : " + temperature);
+		System.out.println("targetroom requested is : " + targetedRoom);
+		System.out.println("Zone : "+ contextManager.getZone(targetedRoom));
 		mapZoneTemperature.put( contextManager.getZone(targetedRoom) , temperature);
 		
 	}
 
 	@Override
 	public float getTargetedTemperature(String room) {
+		System.out.println("Room get target temp : "+ room);
+		System.out.println("Zone get target temp : "+ contextManager.getZone(room) );
 		Zone zroom = contextManager.getZone(room);
 		return mapZoneTemperature.get(zroom);
 	}

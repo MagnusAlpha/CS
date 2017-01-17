@@ -17,12 +17,18 @@ public class TemperatureManagerImpl implements TemperatureManagerAdministration 
 	
 	@Override
 	public void temperatureIsTooHigh(String roomName) {
+		System.out.println(temperatureConfiguration);
+		System.out.println(temperatureConfiguration.getTargetedTemperature(roomName));
+		System.out.println("get target temp good");
 		temperatureConfiguration.setTargetedTemperature(roomName, temperatureConfiguration.getTargetedTemperature(roomName) - 1);
 		
 	}
 
 	@Override
 	public void temperatureIsTooLow(String roomName) {
+		System.out.println(temperatureConfiguration);
+		System.out.println(temperatureConfiguration.getTargetedTemperature(roomName));
+		System.out.println("get target temp good");
 		temperatureConfiguration.setTargetedTemperature(roomName, temperatureConfiguration.getTargetedTemperature(roomName) + 1);		
 	}
 
